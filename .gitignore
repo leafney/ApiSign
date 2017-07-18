@@ -1,0 +1,7 @@
+# git ignore file
+bin/
+obj/
+*.[pdb]
+*.[suo]
+packages/
+.vs/

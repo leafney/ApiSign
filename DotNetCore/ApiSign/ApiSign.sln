@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.6
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiSign.Core", "ApiSign.Core\ApiSign.Core.csproj", "{A27CE6C6-FE59-4A06-89D2-E9FA1D61EA09}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{97CB3907-22B2-4429-B65F-7470BE54AADB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiSign.Test.MVCWeb", "ApiSign.Test.MVCWeb\ApiSign.Test.MVCWeb.csproj", "{086C508D-F57A-4F5F-BF0A-02CB1E05DA4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiSign.Test.CoreWeb", "ApiSign.Test.CoreWeb\ApiSign.Test.CoreWeb.csproj", "{A990A8F5-3938-4260-939D-646E565AF95F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiSign.REST", "ApiSign.REST\ApiSign.REST.csproj", "{4F81A0E7-641C-438E-8F94-7A1BAC8A2F4F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A27CE6C6-FE59-4A06-89D2-E9FA1D61EA09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A27CE6C6-FE59-4A06-89D2-E9FA1D61EA09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A27CE6C6-FE59-4A06-89D2-E9FA1D61EA09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A27CE6C6-FE59-4A06-89D2-E9FA1D61EA09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{086C508D-F57A-4F5F-BF0A-02CB1E05DA4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{086C508D-F57A-4F5F-BF0A-02CB1E05DA4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{086C508D-F57A-4F5F-BF0A-02CB1E05DA4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{086C508D-F57A-4F5F-BF0A-02CB1E05DA4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A990A8F5-3938-4260-939D-646E565AF95F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A990A8F5-3938-4260-939D-646E565AF95F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A990A8F5-3938-4260-939D-646E565AF95F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A990A8F5-3938-4260-939D-646E565AF95F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F81A0E7-641C-438E-8F94-7A1BAC8A2F4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F81A0E7-641C-438E-8F94-7A1BAC8A2F4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F81A0E7-641C-438E-8F94-7A1BAC8A2F4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F81A0E7-641C-438E-8F94-7A1BAC8A2F4F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{086C508D-F57A-4F5F-BF0A-02CB1E05DA4A} = {97CB3907-22B2-4429-B65F-7470BE54AADB}
+		{A990A8F5-3938-4260-939D-646E565AF95F} = {97CB3907-22B2-4429-B65F-7470BE54AADB}
+	EndGlobalSection
+EndGlobal

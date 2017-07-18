@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.6
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiSignFK.Core", "ApiSignFK.Core\ApiSignFK.Core.csproj", "{E5CA946A-83F2-4462-81F1-6E79A1D80373}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Project", "Project", "{7D3FD6DF-5B51-491A-BE51-5B5160A86121}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{E667A8F8-288F-42A4-B21C-A9970C3B179B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiSignFK.Test.MVCWeb", "ApiSignFK.Test.MVCWeb\ApiSignFK.Test.MVCWeb.csproj", "{0645DA12-3FD3-4578-8372-C68952E4901E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E5CA946A-83F2-4462-81F1-6E79A1D80373}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5CA946A-83F2-4462-81F1-6E79A1D80373}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5CA946A-83F2-4462-81F1-6E79A1D80373}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5CA946A-83F2-4462-81F1-6E79A1D80373}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0645DA12-3FD3-4578-8372-C68952E4901E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0645DA12-3FD3-4578-8372-C68952E4901E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0645DA12-3FD3-4578-8372-C68952E4901E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0645DA12-3FD3-4578-8372-C68952E4901E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E5CA946A-83F2-4462-81F1-6E79A1D80373} = {7D3FD6DF-5B51-491A-BE51-5B5160A86121}
+		{0645DA12-3FD3-4578-8372-C68952E4901E} = {E667A8F8-288F-42A4-B21C-A9970C3B179B}
+	EndGlobalSection
+EndGlobal
