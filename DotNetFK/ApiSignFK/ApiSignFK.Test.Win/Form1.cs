@@ -38,5 +38,37 @@ namespace ApiSignFK.Test.Win
            var resp= api.HttpPost("api/v1/add", new {Name="张三",Age=34,Address="北京" });
             tbox.Text = resp.Content;
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var d = new Dictionary<string, string>();
+            d.Add("id", "3");
+            d.Add("name", "诸葛亮");
+
+
+            var res = api.HttpGetV2("api/v2/user",d);
+            tbox.Text = res.Content;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            var res = api.HttpPostV2("api/v2/user", new { Name = "Wang 五"});
+            tbox.Text = res.Content;
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            var res = api.HttpPutV2("api/v2/user", new { Name = "刘备" });
+            tbox.Text = res.Content;
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            var d = new Dictionary<string, string>();
+            d.Add("id", "5");
+
+            var res = api.HttpDeleteV2("api/v2/user", d);
+            tbox.Text = res.Content;
+        }
     }
 }
