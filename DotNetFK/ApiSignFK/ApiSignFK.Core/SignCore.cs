@@ -69,17 +69,24 @@ namespace ApiSignFK.Core
         public static string CreateSign(string prestr, string appSecret, string charset = "utf-8")
         {
             //将secret=appsecret拼接在所有参数字符串后面
-            prestr = prestr + "secret=" + appSecret;
+            prestr = prestr + "secret=" + GetMd5Hash(appSecret, charset);
+            return GetMd5Hash(prestr, charset);
+        }
+        #endregion
 
+
+        #region 获取字符串的MD5值
+
+        public static string GetMd5Hash(string text, string charset = "utf-8")
+        {
             using (var md5 = MD5.Create())
             {
-                byte[] bt = md5.ComputeHash(Encoding.GetEncoding(charset).GetBytes(prestr));
+                byte[] bt = md5.ComputeHash(Encoding.GetEncoding(charset).GetBytes(text));
                 var strResult = BitConverter.ToString(bt);
                 string str = strResult.Replace("-", "");
                 return str.ToUpper();
             }
-
-        }
+        } 
         #endregion
 
     }

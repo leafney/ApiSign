@@ -46,8 +46,9 @@ namespace ApiSignFK.Core
         }
         #endregion
 
+        #region 生成请求的签名
 
-        public static string CreateRequestMySign(SortedDictionary<string, string> sParaTemp)
+        public static string CreateRequestMySign(SortedDictionary<string, string> sParaTemp,string secret)
         {
             //过滤签名参数数组
             var sPara = SignCore.FilterPara(sParaTemp);
@@ -56,9 +57,10 @@ namespace ApiSignFK.Core
             string temp = SignCore.CreateLinkString(sPara);
 
             //获得签名结果
-            string mysign = SignCore.CreateSign(temp, SignConfig.AppSecret);
+            string mysign = SignCore.CreateSign(temp, secret);
 
             return mysign;
-        }
+        } 
+        #endregion
     }
 }

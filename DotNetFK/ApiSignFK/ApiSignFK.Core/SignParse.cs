@@ -70,7 +70,7 @@ namespace ApiSignFK.Core
                 NameValueCollection forms = context.Request.QueryString;
                 foreach (var item in forms.AllKeys)
                 {
-                    sArray.Add(item,forms[item]);
+                    sArray.Add(item, forms[item]);
                 }
             }
             #endregion
@@ -139,7 +139,7 @@ namespace ApiSignFK.Core
         /// <param name="secret">密钥</param>
         /// <param name="_input_charset">编码格式</param>
         /// <returns></returns>
-        public bool VerifySign(SortedDictionary<string, string> paramReqs, string sign, string secret, string _input_charset = "utf-8")
+        public bool VerifySign(SortedDictionary<string, string> paramReqs, string urlSign, string secret, string _input_charset = "utf-8")
         {
             //过滤签名参数数组
             var sPara = SignCore.FilterPara(paramReqs);
@@ -149,7 +149,7 @@ namespace ApiSignFK.Core
 
             //获得签名结果
             string mysign = SignCore.CreateSign(temp, secret, _input_charset);
-            if (mysign == sign)
+            if (mysign == urlSign)
             {
                 return true;
             }
@@ -157,6 +157,23 @@ namespace ApiSignFK.Core
             {
                 return false;
             }
+        }
+        #endregion
+
+        #region 生成请求的签名
+
+        public static string CreateRequestMySign(SortedDictionary<string, string> paramReqs, string secret, string _input_charset = "utf-8")
+        {
+            //过滤签名参数数组
+            var sPara = SignCore.FilterPara(paramReqs);
+
+            //“参数=参数值”的模式用“&”字符拼接
+            string temp = SignCore.CreateLinkString(sPara);
+
+            //获得签名结果
+            string mysign = SignCore.CreateSign(temp, secret);
+
+            return mysign;
         }
         #endregion
 
