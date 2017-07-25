@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
+
 namespace ApiSignFK.Test.Win
 {
     public partial class Form1 : Form
@@ -21,7 +23,7 @@ namespace ApiSignFK.Test.Win
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
+
 
             var d = new Dictionary<string, string>();
             d.Add("id", "3");
@@ -35,7 +37,7 @@ namespace ApiSignFK.Test.Win
 
         private void button2_Click(object sender, EventArgs e)
         {
-           var resp= api.HttpPost("api/v1/add", new {Name="张三",Age=34,Address="北京" });
+            var resp = api.HttpPost("api/v1/add", new { Name = "张三", Age = 34, Address = "北京" });
             tbox.Text = resp.Content;
         }
 
@@ -46,13 +48,13 @@ namespace ApiSignFK.Test.Win
             d.Add("name", "诸葛亮");
 
 
-            var res = api.HttpGetV2("api/v2/user",d);
+            var res = api.HttpGetV2("api/v2/user", d);
             tbox.Text = res.Content;
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            var res = api.HttpPostV2("api/v2/user", new { Name = "Wang 五"});
+            var res = api.HttpPostV2("api/v2/user", new { Name = "Wang 五" });
             tbox.Text = res.Content;
         }
 
@@ -69,6 +71,25 @@ namespace ApiSignFK.Test.Win
 
             var res = api.HttpDeleteV2("api/v2/user", d);
             tbox.Text = res.Content;
+        }
+
+
+        ApiHelper.ApiHttpHelper api_Lib = new ApiHelper.ApiHttpHelper("http://localhost:8080", "5135911898", "d2a57dc1d883fd21fb9951699df71cc7");
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            var d = new Dictionary<string, string>();
+            d.Add("id", "3");
+            d.Add("name", "苏先生");
+
+            var res = api_Lib.ApiGet("api/v3/student", d);
+            tbox.Text = res.Content;
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+        var res = api_Lib.ApiPost("api/v3/student", new { Name = "梅长苏" });
+        tbox.Text = res.Content;
         }
     }
 }

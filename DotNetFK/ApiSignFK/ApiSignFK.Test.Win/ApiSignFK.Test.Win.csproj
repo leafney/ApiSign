@@ -86,6 +86,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ApiSignFK.ApiHelper\ApiSignFK.ApiHelper.csproj">
+      <Project>{b4d55f98-f123-4c6a-957e-9f11ea74f98f}</Project>
+      <Name>ApiSignFK.ApiHelper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ApiSignFK.Core\ApiSignFK.Core.csproj">
       <Project>{e5ca946a-83f2-4462-81f1-6e79a1d80373}</Project>
       <Name>ApiSignFK.Core</Name>

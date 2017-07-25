@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ApiSignFK.HttpHelper
+namespace ApiSignFK.ApiHelper
 {
     public class ApiHttpHelper
     {
@@ -14,11 +14,9 @@ namespace ApiSignFK.HttpHelper
         private static string _appKey = "";
         private static string _appSecret = "";
 
-        //public static string App_Key = "6800168364";
-        //public static string App_Secret = "Fr2rsAJYtqlolNZVwNuTqMoBU8sFCdMF";
-
+        #region 初始化
         /// <summary>
-        /// 
+        /// 初始化
         /// </summary>
         /// <param name="baseUri">请求地址</param>
         /// <param name="appKey"></param>
@@ -29,20 +27,21 @@ namespace ApiSignFK.HttpHelper
             _appKey = appKey;
             _appSecret = appSecret;
         }
+        #endregion
 
-        #region 基于RestSharp封装接口请求方法
+
+        #region 基于RestSharp封装
         /// <summary>
-        /// 基于RestSharp封装接口请求方法
+        /// 基于RestSharp封装
         /// </summary>
-        /// <param name="resource">请求资源</param>
-        /// <param name="method">请求方法</param>
-        /// <param name="paramData">Url请求参数</param>
-        /// <param name="bodyData">Body请求参数</param>
+        /// <param name="client"></param>
+        /// <param name="request"></param>
+        /// <param name="method"></param>
+        /// <param name="paramData"></param>
+        /// <param name="bodyData"></param>
         /// <returns></returns>
-        private IRestResponse HttpRequest(string resource, Method method, Dictionary<string, string> paramData = null, object bodyData = null)
+        private RestRequest BaseApiRequest(RestClient client, RestRequest request, Method method, Dictionary<string, string> paramData = null, object bodyData = null)
         {
-            var client = new RestClient(_baseUri);
-            var request = new RestRequest(resource, method);
             int contentLength = 0;
 
             //获取所有请求参数
@@ -104,16 +103,115 @@ namespace ApiSignFK.HttpHelper
             request.AddHeader("X-Auth-Key", _appKey);
             request.AddHeader("X-Auth-TimeStamp", unixTime.ToString());
 
+            return request;
+        } 
+        #endregion
+
+
+        #region 基于RestSharp封装接口请求方法
+        /// <summary>
+        /// 基于RestSharp封装接口请求方法
+        /// </summary>
+        /// <param name="resource">请求资源</param>
+        /// <param name="method">请求方法</param>
+        /// <param name="paramData">Url请求参数</param>
+        /// <param name="bodyData">Body请求参数</param>
+        /// <returns></returns>
+        private IRestResponse ApiRequest(string resource, Method method, Dictionary<string, string> paramData = null, object bodyData = null)
+        {
+            var client = new RestClient(_baseUri);
+            var request = new RestRequest(resource, method);
+
+            request= BaseApiRequest(client, request, method, paramData, bodyData);
+
             //发起请求
             IRestResponse queryResult = client.Execute(request);
             return queryResult;
         }
+
+        /// <summary>
+        /// 基于RestSharp封装接口请求方法
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="resource"></param>
+        /// <param name="method"></param>
+        /// <param name="paramData"></param>
+        /// <param name="bodyData"></param>
+        /// <returns></returns>
+        private IRestResponse<T> ApiRequest<T>(string resource, Method method, Dictionary<string, string> paramData = null, object bodyData = null) where T : new()
+        {
+            var client = new RestClient(_baseUri);
+            var request = new RestRequest(resource, method);
+
+            request = BaseApiRequest(client, request, method, paramData, bodyData);
+
+            //发起请求
+            IRestResponse<T> queryResult = client.Execute<T>(request);
+            return queryResult;// T =queryResult.Data;
+        }
+
+        #endregion
+
+
+        #region 基础方式请求
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="resource"></param>
+        /// <param name="paramData"></param>
+        /// <returns></returns>
+        public IRestResponse ApiGet(string resource, Dictionary<string, string> paramData)
+        {
+            return ApiRequest(resource, Method.GET, paramData);
+        }
+
+        public IRestResponse ApiPost(string resource, object postData)
+        {
+            return ApiRequest(resource, Method.POST, bodyData: postData);
+        }
+
+        public IRestResponse ApiPut(string resource, object postData)
+        {
+            return ApiRequest(resource, Method.PUT, bodyData: postData);
+        }
+
+        public IRestResponse ApiDelete(string resource, Dictionary<string, string> paramData)
+        {
+            return ApiRequest(resource, Method.DELETE, paramData: paramData);
+        }
+
+        #endregion
+
+        #region 泛型方式请求
+
+        public IRestResponse<T> ApiGet<T>(string resource, Dictionary<string, string> paramData) where T : new()
+        {
+            return ApiRequest<T>(resource, Method.GET, paramData);
+        }
+
+        public IRestResponse<T> ApiPost<T>(string resource, object postData) where T : new()
+        {
+            return ApiRequest<T>(resource, Method.POST, bodyData: postData);
+        }
+
+        public IRestResponse<T> ApiPut<T>(string resource, object postData) where T : new()
+        {
+            return ApiRequest<T>(resource, Method.PUT, bodyData: postData);
+        }
+
+        public IRestResponse<T> ApiDelete<T>(string resource, Dictionary<string, string> paramData) where T : new()
+        {
+            return ApiRequest<T>(resource, Method.DELETE, paramData: paramData);
+        }
+
         #endregion
 
 
 
         #region V1
 
+        /*
         public IRestResponse HttpGet(string resource, Dictionary<string, string> paramData)
         {
             var client = new RestClient(_baseUri);
@@ -189,31 +287,8 @@ namespace ApiSignFK.HttpHelper
             IRestResponse queryResult = client.Execute(request);
             return queryResult;
         }
-
+        */
         #endregion
 
-
-        #region V2
-
-        public IRestResponse HttpGetV2(string resource, Dictionary<string, string> paramData)
-        {
-            return HttpRequest(resource, Method.GET, paramData);
-        }
-
-        public IRestResponse HttpPostV2(string resource, object postData)
-        {
-            return HttpRequest(resource, Method.POST, bodyData: postData);
-        }
-
-        public IRestResponse HttpPutV2(string resource, object postData)
-        {
-            return HttpRequest(resource, Method.PUT, bodyData: postData);
-        }
-
-        public IRestResponse HttpDeleteV2(string resource, Dictionary<string, string> paramData)
-        {
-            return HttpRequest(resource, Method.DELETE, paramData: paramData);
-        }
-        #endregion
     }
 }
