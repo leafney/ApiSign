@@ -17,9 +17,9 @@ namespace ApiSignFK.ApiHelper
         /// <summary>
         /// 初始化
         /// </summary>
-        /// <param name="baseUri">请求地址</param>
-        /// <param name="appKey"></param>
-        /// <param name="appSecret"></param>
+        /// <param name="baseUri">请求基地址</param>
+        /// <param name="appKey">appKeyparam>
+        /// <param name="appSecret">appSecret</param>
         public ApiHttpHelper(string baseUri, string appKey, string appSecret)
         {
             _baseUri = baseUri;

@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web;
 
 namespace ApiSignFK.Core
@@ -32,7 +28,7 @@ namespace ApiSignFK.Core
             string reqMethod = context.Request.HttpMethod;
             sArray.Add("method", reqMethod);
             //uri
-            string reqUri = context.Request.Url.AbsoluteUri;
+            string reqUri = context.Request.Url.PathAndQuery;
             sArray.Add("uri", reqUri);
             //Content-Length
             int reqContLength = context.Request.ContentLength;

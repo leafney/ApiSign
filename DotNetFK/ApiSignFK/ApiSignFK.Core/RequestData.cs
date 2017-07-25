@@ -1,23 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace ApiSignFK.Core
 {
     public class RequestData
     {
         /// <summary>
-        /// 请求参数中的key的值
+        /// 请求头中的key的值
         /// </summary>
         public string ReqKey { get; set; }
         /// <summary>
-        /// 请求参数中的sign的值
+        /// 请求头中的sign的值
         /// </summary>
         public string ReqSign { get; set; }
         /// <summary>
-        /// 请求参数中的timestamp的值
+        /// 请求头中的timestamp的值
         /// </summary>
         public string ReqTimeStamp { get; set; }
         /// <summary>

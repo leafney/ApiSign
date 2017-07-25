@@ -43,9 +43,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestData.cs" />
-    <Compile Include="SignConfig.cs" />
     <Compile Include="SignCore.cs" />
-    <Compile Include="SignGenereate.cs" />
     <Compile Include="SignParse.cs" />
     <Compile Include="TimeHelper.cs" />
   </ItemGroup>
