@@ -1,5 +1,4 @@
 ﻿using ApiSignFK.Core;
-using Newtonsoft.Json;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -67,7 +66,8 @@ namespace ApiSignFK.ApiHelper
                         //将请求内容作为json数据存入Body中
                         request.AddJsonBody(bodyData);
                         //获取请求数据的字节长度
-                        string json_Data = JsonConvert.SerializeObject(bodyData);
+                        //string json_Data = JsonConvert.SerializeObject(bodyData);
+                        string json_Data = SimpleJson.SerializeObject(bodyData);
                         var bytes = Encoding.UTF8.GetBytes(json_Data);
                         contentLength = bytes.Length;
                     }
